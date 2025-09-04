@@ -1,7 +1,7 @@
 name: Build precompiled NIFs
 
 env:
-  NIF_DIRECTORY: "native/htmd"
+  NIF_DIRECTORY: "native/htmd_nif"
 
 on:
   push:
