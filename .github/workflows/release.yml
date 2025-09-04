@@ -62,7 +62,7 @@ jobs:
         id: build-crate
         uses: philss/rustler-precompiled-action@v1.1.4
         with:
-          project-name: htmd
+          project-name: htmd_nif
           project-version: ${{ env.PROJECT_VERSION }}
           target: ${{ matrix.job.target }}
           nif-version: ${{ matrix.nif }}
@@ -70,7 +70,7 @@ jobs:
           variant: ${{ matrix.job.variant }}
           cargo-args: ${{ matrix.job.cargo-args }}
           cross-version: "v0.2.5"
-          project-dir: "native/htmd"
+          project-dir: "native/htmd_nif"
 
       - name: Artifact upload
         uses: actions/upload-artifact@v4
