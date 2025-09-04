@@ -1,0 +1,13 @@
+[package]
+name = "htmd"
+version = "0.1.0"
+authors = []
+edition = "2021"
+
+[lib]
+name = "htmd"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustler = "0.36.2"
+htmd = "0.1"
