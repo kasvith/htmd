@@ -26,3 +26,5 @@ htmd-*.tar
 /target/
 
 /priv/native/*
+
+checksum-*.exs
