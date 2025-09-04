@@ -1,5 +1,8 @@
 # Htmd
 
+![Hex.pm Version](https://img.shields.io/hexpm/v/htmd)
+
+
 A fast HTML to Markdown converter for Elixir, powered by Rust.
 
 Htmd provides high-performance HTML to Markdown conversion using the Rust [htmd crate](https://crates.io/crates/htmd) as a Native Implemented Function (NIF). It offers extensive customization options for controlling the output format and is designed for applications that need to process large amounts of HTML content efficiently.
