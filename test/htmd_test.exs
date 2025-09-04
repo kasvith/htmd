@@ -111,11 +111,13 @@ defmodule HtmdTest do
 
     test "handles multiple options together" do
       html = "<h1>Title</h1><ul><li>Item</li></ul><img src='skip.jpg'>"
+
       options = [
         heading_style: :setex,
         bullet_list_marker: :dash,
         skip_tags: ["img"]
       ]
+
       assert {:ok, markdown} = Htmd.convert(html, options)
       assert markdown =~ "Title\n====="
       assert markdown =~ "-   Item"
