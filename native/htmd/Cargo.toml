@@ -2,7 +2,7 @@
 name = "htmd"
 version = "0.1.0"
 authors = []
-edition = "2021"
+edition = "2024"
 
 [lib]
 name = "htmd"
@@ -10,4 +10,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 rustler = "0.36.2"
-htmd = "0.1"
+htmd = "0.3.0"
