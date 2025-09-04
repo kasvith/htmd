@@ -1,11 +1,11 @@
 [package]
-name = "htmd"
+name = "htmd_nif"
 version = "0.1.0"
 authors = []
 edition = "2024"
 
 [lib]
-name = "htmd"
+name = "htmd_nif"
 crate-type = ["cdylib"]
 
 [dependencies]

@@ -19,7 +19,7 @@ defmodule Htmd.Native do
 
   use RustlerPrecompiled,
     otp_app: :htmd,
-    crate: "htmd",
+    crate: "htmd_nif",
     base_url: "#{github_url}/releases/download/v#{version}",
     nif_versions: nif_versions,
     targets: targets,
