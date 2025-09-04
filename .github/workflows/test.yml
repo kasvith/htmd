@@ -28,10 +28,9 @@ jobs:
           otp-version: ${{ matrix.otp }}
 
       - name: Set up Rust
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
-          override: true
 
       - name: Restore dependencies cache
         uses: actions/cache@v4
