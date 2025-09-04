@@ -1,7 +1,8 @@
 # Htmd
 
-![Hex.pm Version](https://img.shields.io/hexpm/v/htmd)
-
+[![Hex Version](https://img.shields.io/hexpm/v/htmd.svg)](https://hex.pm/packages/htmd)
+[![Hex Docs](http://img.shields.io/badge/hex.pm-docs-green.svg?style=flat)](https://hexdocs.pm/htmd)
+[![Mix Test](https://github.com/kasvith/htmd/actions/workflows/test.yml/badge.svg)](https://github.com/kasvith/htmd/actions/workflows/test.yml)
 
 A fast HTML to Markdown converter for Elixir, powered by Rust.
 
