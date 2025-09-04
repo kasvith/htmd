@@ -1,5 +1,5 @@
-use htmd::{HtmlToMarkdown, options::*};
-use rustler::{Atom, NifResult, NifTuple, NifStruct};
+use htmd::{options::*, HtmlToMarkdown};
+use rustler::{Atom, NifResult, NifStruct, NifTuple};
 
 mod atoms {
     rustler::atoms! {
@@ -195,7 +195,6 @@ impl From<ConvertOptions> for Options {
             options.bullet_list_marker = bullet_list_marker_from_atom(bullet_list_marker);
         }
 
-
         if let Some(preformatted_code) = opts.preformatted_code {
             options.preformatted_code = preformatted_code;
         }
@@ -204,7 +203,7 @@ impl From<ConvertOptions> for Options {
     }
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn convert(html: String) -> NifResult<Response> {
     let converter = HtmlToMarkdown::new();
     match converter.convert(&html) {
@@ -219,7 +218,7 @@ fn convert(html: String) -> NifResult<Response> {
     }
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn convert_with_options(html: String, options: ConvertOptions) -> NifResult<Response> {
     // Extract skip_tags before moving options
     let skip_tags = options.skip_tags.clone();
