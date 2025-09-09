@@ -63,7 +63,7 @@ defmodule Htmd do
   ## Options
 
     * `:heading_style` - `:atx` (default) or `:setex`
-    * `:hr_style` - `:dashes` (default), `:underscores`, or `:stars`  
+    * `:hr_style` - `:dashes` (default), `:underscores`, or `:stars`
     * `:br_style` - `:two_spaces` (default) or `:backslash`
     * `:link_style` - `:inlined` (default), `:inlined_prefer_autolinks`, or `:referenced`
     * `:link_reference_style` - `:full` (default), `:collapsed`, or `:shortcut`
@@ -88,6 +88,25 @@ defmodule Htmd do
   def convert(html, options) when is_binary(html) do
     convert_options = build_options(options)
     Native.convert_with_options(html, convert_options)
+  end
+
+  @doc """
+  Converts HTML string to Markdown, silently returning an empty string on error.
+  ## Examples
+
+      iex> Htmd.convert!("<h1>Hello World</h1>")
+      "# Hello World"
+
+      iex> Htmd.convert!("<p>Simple paragraph</p>")
+      "Simple paragraph"
+
+  """
+  @spec convert!(html, options) :: binary()
+  def convert!(html, options \\ []) when is_binary(html) do
+    case convert(html, options) do
+      {:ok, markdown} -> markdown
+      {:error, _} -> ""
+    end
   end
 
   defp build_options(options) when is_list(options) do
