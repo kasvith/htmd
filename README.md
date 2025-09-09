@@ -43,6 +43,10 @@ end
 # Convert links
 {:ok, markdown} = Htmd.convert("<a href='https://example.com'>Example</a>")
 # => {:ok, "[Example](https://example.com)"}
+
+# Use the bang version for direct result(shh!! we are silently ignoring errors here)
+markdown = Htmd.convert!("<h2>Subtitle</h2>")
+# => "## Subtitle"
 ```
 
 ## Advanced Usage with Options
