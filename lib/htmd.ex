@@ -11,6 +11,11 @@ defmodule Htmd do
       iex> Htmd.convert("<h1>Hello World</h1>")
       {:ok, "# Hello World"}
 
+  ## If you want to ignore errors and get an empty string on failure
+
+      iex> Htmd.convert!("<h1>Hello World</h1>")
+      "# Hello World"
+
   ## Advanced Usage with Options
 
       iex> Htmd.convert("<h1>Title</h1><ul><li>Item</li></ul>", [
