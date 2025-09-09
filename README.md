@@ -1,6 +1,7 @@
 # Htmd
 
 [![Hex Version](https://img.shields.io/hexpm/v/htmd.svg)](https://hex.pm/packages/htmd)
+![Hex.pm Downloads](https://img.shields.io/hexpm/dt/htmd)
 [![Hex Docs](http://img.shields.io/badge/hex.pm-docs-green.svg?style=flat)](https://hexdocs.pm/htmd)
 [![Mix Test](https://github.com/kasvith/htmd/actions/workflows/test.yml/badge.svg)](https://github.com/kasvith/htmd/actions/workflows/test.yml)
 
