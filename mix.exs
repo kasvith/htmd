@@ -28,7 +28,7 @@ defmodule Htmd.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~> 0.36.2", optional: true},
+      {:rustler, "~> 0.38", optional: true},
       {:rustler_precompiled, "~> 0.8"},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false, warn_if_outdated: true}
     ]

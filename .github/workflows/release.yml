@@ -30,13 +30,13 @@ jobs:
               os: ubuntu-22.04,
               use-cross: true,
             }
-          - { target: aarch64-apple-darwin, os: macos-13 }
+          - { target: aarch64-apple-darwin, os: macos-15 }
           - {
               target: riscv64gc-unknown-linux-gnu,
               os: ubuntu-22.04,
               use-cross: true,
             }
-          - { target: x86_64-apple-darwin, os: macos-13 }
+          - { target: x86_64-apple-darwin, os: macos-15 }
           - { target: x86_64-unknown-linux-gnu, os: ubuntu-22.04 }
           - {
               target: x86_64-unknown-linux-musl,
@@ -48,7 +48,7 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Extract project version
         shell: bash
@@ -64,7 +64,7 @@ jobs:
 
       - name: Build the project
         id: build-crate
-        uses: philss/rustler-precompiled-action@v1.1.4
+        uses: philss/rustler-precompiled-action@v1.1.5
         with:
           project-name: htmd_nif
           project-version: ${{ env.PROJECT_VERSION }}
@@ -77,14 +77,24 @@ jobs:
           project-dir: "native/htmd_nif"
 
       - name: Artifact upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.build-crate.outputs.file-name }}
           path: ${{ steps.build-crate.outputs.file-path }}
 
-      - name: Publish archives and packages
-        uses: softprops/action-gh-release@v2
+  publish_release:
+    name: Publish Release
+    needs: build_release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v8
         with:
-          files: |
-            ${{ steps.build-crate.outputs.file-path }}
-        if: startsWith(github.ref, 'refs/tags/')
+          path: artifacts
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v3
+        with:
+          files: artifacts/**/*
