@@ -19,11 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        elixir: ["1.18", "1.19"]
+        elixir: ["1.18", "1.19", "1.20"]
         otp: ["27", "28"]
+        include:
+          - { elixir: "1.20", otp: "29" }
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
@@ -37,7 +39,7 @@ jobs:
           toolchain: stable
 
       - name: Restore dependencies cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: deps
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
